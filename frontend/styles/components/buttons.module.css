@@ -1,0 +1,93 @@
+.button_small {
+	height: 25px;
+	width: 25px;
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_green {
+	padding : 5px;
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_orange {
+	padding : 5px;
+	background-color: #C1443E;;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_simple {
+	height: 35px;
+	width: 60px;
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_unset {
+	height: 35px;
+	width: 60px;
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_select_popup {
+	height: 50px;
+	width: 90px;
+	font-size: 1em;
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.big_button {
+	height: 60px;
+	width: 130px;
+	background-color: #C1443E;;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.button_invisible {
+	background-color: #C1443E;
+	height: 35px;
+	width: 60px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button_text {
+	background-color: #005758;
+	height: 35px;
+	width: 380px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}

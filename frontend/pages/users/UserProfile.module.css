@@ -1,0 +1,19 @@
+.card {
+  background-color: #bf423c;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto';
+}
+
+.card_avatar{
+    width: 30rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+}

@@ -1,0 +1,82 @@
+.wrapper {
+    display: grid;
+    grid-template-areas: 
+    "a a a a c c c c d d h h"
+    "e e e e c c c c g g g g"
+    "e e e e f f f f g g g g"
+    "e e e e f f f f g g g g";
+    grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr, 1fr;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(200px, auto);
+    height: 100vh;
+}
+
+.channelCreation {
+    grid-area: a;
+    align-self: end;
+    justify-self: left;
+}
+
+.personnalMsg {
+    grid-area: a;
+    align-self: end;
+    justify-self: center;
+}
+
+.personnalInfo {
+    grid-area: a;
+    align-self: end;
+    justify-self: right;
+}
+
+.connectedUsers {
+    grid-area: e;
+    align-self: start;
+    justify-self: center;
+}
+
+.publicChannels {
+    grid-area: c;
+    align-self: end;
+    justify-self: center;
+}
+
+.myChannels {
+    grid-area: f;
+    align-self: start;
+    justify-self: center;
+}
+
+.channelSelected {
+    grid-area: g;
+    align-self: end;
+    justify-self: center;
+}
+
+.changeMembers {
+    grid-area: g;
+    align-self: start;
+    justify-self: left;
+}
+
+.channelInfoButton {
+    grid-area: g;
+    align-self: start;
+    justify-self: center;
+}
+
+.leaveChannelButton {
+    grid-area: g;
+    align-self: start;
+    justify-self: right;
+}
+
+.listChannelMembers {
+    grid-area: c;
+    justify-self: center;
+}
+
+.ownerSection {
+    grid-area: f;
+    justify-self: center;
+}

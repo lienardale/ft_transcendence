@@ -1,0 +1,150 @@
+/* LIST_BLOCK */
+
+.list_block {
+	background-color: #C1443E;
+	color: white;
+    border: 3px solid #eaeaea;
+    padding: 0px;
+    margin: 20px;
+    border-radius: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.list_block_small {
+    height: 350px;
+	width: 420px;
+}
+
+.list_block_tall {
+    height: 500px;
+	width: 420px;
+}
+
+.list_block p {
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list_block_li {
+    list-style-type: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list_block ul {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0rem;
+}
+
+.list_block_li2 {
+    list-style-type: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list_block img {
+	border-radius: 50%;
+	height: 35px;
+    margin-left: 0%;
+}
+
+.list_block form {
+	border-radius: 5%;
+    font-size: 1rem;
+	background-color: #eaeaea;
+    padding: 0.3rem;
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+} 
+
+.list_block form input[value] {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    border: none;
+	background-color: #eaeaea;
+    padding: 0.3rem;
+    width: 80%;
+} 
+
+.list_block form input[type=submit] {
+	background-color: #005758;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+    width: 20%;
+}
+
+/* ICONES */
+
+.line_icon {
+	border-radius: 50%;
+	height: 10px;
+    margin-left: 0%;
+	cursor: pointer;
+}
+
+/* COLORS */
+
+.green {
+	color: #084a4b;
+}
+
+/* SOUS_SECTION */
+
+.sous_section {
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    padding: 0.3rem;
+}
+
+.sous_section_row {
+    font-size: 1.1rem;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nextto {
+    display: flex;
+    align-items: center;
+}
+
+.justif {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.8rem;
+}
+
+@media screen and (max-width: 439px){
+    .list_block {
+        overflow-x: auto;
+    }
+    .justif {
+        display: flex;
+        justify-content: space-around;
+        padding: 0rem;
+    }
+}

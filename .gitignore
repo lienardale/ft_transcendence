@@ -1,0 +1,82 @@
+# compiled output
+./dist
+
+# backend
+./backend/dist/*
+./backend/build
+./backend/node_modules
+./backend/node_modules/*
+backend/node_modules/*
+./backend/.next/
+./backend/.next/*
+./backend/.env
+
+#frontend
+./frontend/node_modules
+frontend/node_modules
+./frontend/node_modules/*
+./frontend/.next
+./frontend/.next/*
+./frontend/.pnp
+./frontend/.pnp.js
+./frontend/.vercel
+./frontend/build
+./frontend/public/uploads
+./frontend/.env
+# local env files
+./frontend/.env.development.local
+./frontend/.env.test.local
+./frontend/.env.production.local
+./frontend/.next/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# misc
+*.pem
+
+# Tests
+./backend/coverage
+./frontend/coverage
+/.nyc_output
+./tests/node_modules/*
+./tests/node_modules
+tests/node_modules
+
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# VIM
+.*.swp
+
+.next
+backend/dist
+frontend/public/uploads/akerloc-.jpeg
+
+# avatars
+
+frontend/public/uploads/*.jpeg
+frontend/public/uploads/*.png
+.env

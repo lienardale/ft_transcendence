@@ -1,0 +1,19 @@
+.list {
+  list-style-type: none;;
+  background-color: white;
+  border-radius: 6px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: 'Roboto';
+  font-size: small;
+}
+
+.list_tittle{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto-bold';
+  font-size: medium;
+}

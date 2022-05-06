@@ -1,0 +1,15 @@
+.popup {
+    border: 3px solid #eaeaea;
+    border-radius: 15px;
+    background-color: #005758;
+    color: #eaeaea;
+}
+
+.popup label {
+    color: #eaeaea;
+}
+
+.popup Button {
+    color: #eaeaea;
+    font-size: 1em;
+}
