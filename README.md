@@ -71,8 +71,6 @@
   - Watch ongoing games
   - Responsive
 
-## Screenshots
-
 ## Run it locally
 
 - To launch the website locally all in Docker :
@@ -99,3 +97,11 @@
 - Don't forget to open ports in the firewall.
 - If you don't use a server_name, reverse proxies will not be of use, just connect to YOUR_SERVERS_IP:3000
 - Don't build docker images in your production server. Use [Github's Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) or equivalent.
+
+## Screenshots
+
+![Home Page](https://github.com/lienardale/ft_transcendence/blob/main/screens/home_page.png?raw=true)
+![Chat Page](https://github.com/lienardale/ft_transcendence/blob/main/screens/chat_page.png?raw=true)
+![Admin Page](https://github.com/lienardale/ft_transcendence/blob/main/screens/admin_page.png?raw=true)
+![Play Page](https://github.com/lienardale/ft_transcendence/blob/main/screens/play_page.png?raw=true)
+![Profile Page](https://github.com/lienardale/ft_transcendence/blob/main/screens/profile_page.png?raw=true)
