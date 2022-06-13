@@ -22,8 +22,9 @@ function onePlayer(game) {
 @WebSocketGateway({
 	namespace: '/pong',
   	cors: {
-    	origin: '*',
+		origin: '*',
   	},
+	transports: ['websocket'],
 })
 
 	export class PongGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
@@ -121,6 +122,7 @@ function onePlayer(game) {
   		}
 
 		afterInit(server: Server) {
+			this.logger.log(`Init: ${server}`);
 		}	
 
 	  	@SubscribeMessage('cancelSearchOpponent')
@@ -154,6 +156,7 @@ function onePlayer(game) {
 			}
 			clients.delete(client.id);
 			client.disconnect(true);
+			this.logger.log(`Client disconnected: ${client.id}`);
 		}
 
 		async handleConnection(client: Socket, ...args: any[]) {
@@ -164,6 +167,7 @@ function onePlayer(game) {
       			client.disconnect();
     		}
 			this.server.emit('connection');
+			this.logger.log(`Client connected: ${client.id}`);
 		}
 
 		@SubscribeMessage('addUser')

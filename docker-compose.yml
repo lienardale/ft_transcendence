@@ -32,8 +32,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    # image: "ghcr.io/YOUR_GIT/YOUR_PACKAGE:VERSION"
     container_name: back_app
-    image: node_app
     ports:
     - "3001:3001"
     env_file:
@@ -47,8 +47,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    # image: "ghcr.io/YOUR_GIT/YOUR_PACKAGE:VERSION"
     container_name: front_app
-    image: front_app
     ports:
     - "3000:3000"
     env_file:

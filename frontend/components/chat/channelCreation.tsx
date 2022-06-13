@@ -37,7 +37,7 @@ function ChannelCreation(props: any) {
                 { channel_type: channelType, name: channelName.current.value, id_pm: 0, hasPassword: (channelPwd.current.value !== ''), password : channelPwd.current.value, user_owner: currentUser!.id }
             );
             if (params !== null) {
-                fetch('http://localhost:3001/channels', params)
+                fetch('/api/channels', params)
                 .then(response => responseHandler(response))
                 .then(response => { 
                     if (mounted) { 

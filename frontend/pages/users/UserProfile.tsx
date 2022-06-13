@@ -34,7 +34,7 @@ function UserProfile() {
     const params = await fetchParams('GET', id);
     if (params !== null) {
         await fetch(
-          'http://localhost:3001/user/' + id, {...params,
+          '/api/user/' + id, {...params,
           signal: controller.signal
         })
           .then(response => responseHandler(response))
@@ -56,7 +56,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch("http://localhost:3001/users", {...params,
+      await fetch("/api/users", {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -99,7 +99,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET', id);
     if (params !== null) {
-      await fetch("http://localhost:3001/user/rank/" + id, {...params,
+      await fetch("/api/user/rank/" + id, {...params,
       signal: controller.signal
     })
         .then(response => responseHandler(response))
@@ -115,7 +115,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends/' + currentUser!.id, {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -131,7 +131,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends-asking/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends-asking/' + currentUser!.id, {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -147,7 +147,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends-asked/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends-asked/' + currentUser!.id, {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -163,7 +163,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/blocked-list/blocked/' + currentUser!.id, {...params,
+      await fetch('/api/blocked-list/blocked/' + currentUser!.id, {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -179,7 +179,7 @@ function UserProfile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/games', {...params,
+      await fetch('/api/games', {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))

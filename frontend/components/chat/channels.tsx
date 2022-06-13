@@ -35,7 +35,7 @@ function Channels(props: any) {
             const params = await fetchParams('POST', { code: valueRef.current.value, channelId: channelCandidate.id } );
             let result :boolean  = false;
             if (params !== null) {
-                await fetch("http://localhost:3001/channels/check-password", params)
+                await fetch("/api/channels/check-password", params)
                 .then(response => responseHandler(response))
                 .then((response) => { 
                     if (mounted) { 

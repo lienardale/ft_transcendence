@@ -13,7 +13,7 @@ function UnBlockUser(props:any){
         const params = await fetchParams('DELETE')
         if (params !== null){
             fetch(
-                'http://localhost:3001/blocked-list/' + props.blockList!.id, params
+                '/api/blocked-list/' + props.blockList!.id, params
             )                .then(response => {
                 if (response.ok) {
                     return response.text();

@@ -15,9 +15,9 @@ async function checkToken(tokenToCheck: string | null, type: number, currentUser
       };
       let backRoute: string;
       if (type === 1) {
-        backRoute = "http://localhost:3001/check-access-token";
+        backRoute = "/api/check-access-token";
       } else if (type === 2 && currentUser !== undefined) {
-        backRoute = "http://localhost:3001/check-refresh-token/" + currentUser.id;
+        backRoute = "/api/check-refresh-token/" + currentUser.id;
       }
       if (backRoute !== undefined) {
         await fetch(backRoute, params)

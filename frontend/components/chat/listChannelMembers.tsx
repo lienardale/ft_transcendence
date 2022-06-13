@@ -71,7 +71,7 @@ function ListChannelMembers(props: any) {
     );
     if (params !== null) {
       let done: boolean = false;
-      await fetch('http://localhost:3001/mute-list', params)
+      await fetch('/api/mute-list', params)
       .then(response => responseHandler(response))
       .then(_response => done = true)
       .catch(_error => console.error("error in mute creation"));

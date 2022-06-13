@@ -10,7 +10,7 @@ async function refresh(refreshToken: string | null) {
         'Authorization': 'Bearer ' + refreshToken
     });
     const params = { headers: customHeaders };
-    await fetch("http://localhost:3001/refresh", params)
+    await fetch("/api/refresh", params)
     .then(response => responseHandler(response))
     .then((response) => {
         localStorage.setItem("currentUser", response.accessToken);

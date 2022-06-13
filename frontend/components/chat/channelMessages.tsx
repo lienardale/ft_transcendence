@@ -69,7 +69,7 @@ function ChannelMessages(props: any) {
                 { content: input, datetime: date, user_writer: currentUser, channel_related: props.channelSelected.id }
             );
             if (params !== null) {
-                fetch('http://localhost:3001/messages', params)
+                fetch('/api/messages', params)
                     .then(response => responseHandler(response))
                     .then(response => chatCtx.chatSocket.emit('msgToServer', {content: JSON.stringify(response), room: props.channelSelected.id}))
                     .catch(_error => console.error("error in channel messages"));

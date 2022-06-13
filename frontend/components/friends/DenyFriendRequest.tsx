@@ -16,7 +16,7 @@ function DenyFriendRequest(props: any) {
         const params = await fetchParams('DELETE')
         if (params !== null) {
             fetch(
-                'http://localhost:3001/friends-list/' + props.friendList!.id, params)
+                '/api/friends-list/' + props.friendList!.id, params)
                 .then(response => {
                     if (response.ok) {
                         return response.text();

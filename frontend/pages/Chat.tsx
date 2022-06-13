@@ -126,7 +126,7 @@ function Chat() {
 
   async function getChannels() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
-    const ret: ChannelFull[] = await fetchGet('http://localhost:3001/channels/all/' + currentUser!.id, controller)
+    const ret: ChannelFull[] = await fetchGet('/api/channels/all/' + currentUser!.id, controller)
     if (ret !== undefined) {
       if (mounted) {
           setChannels(ret);
@@ -136,7 +136,7 @@ function Chat() {
 
   async function getLogins() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
-    const ret: UserFull[] =  await fetchGet('http://localhost:3001/users/all/' + currentUser!.id, controller)
+    const ret: UserFull[] =  await fetchGet('/api/users/all/' + currentUser!.id, controller)
     if (ret !== undefined) {
       if (mounted) {
           setLogins(ret);
@@ -145,7 +145,7 @@ function Chat() {
   }
 
   async function getChannelSelected(channelId: Number) {
-    const ret: ChannelSelected = await fetchGet('http://localhost:3001/channels/selected/' + channelId, controller)
+    const ret: ChannelSelected = await fetchGet('/api/channels/selected/' + channelId, controller)
     if (ret !== undefined) {
       if (mounted) {
         setChannelSelected(ret);
@@ -245,7 +245,7 @@ function Chat() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('POST', { channel_type: "pm", id_pm: input.id, name: '', hasPassword: false, password : '', user_owner: currentUser!.id } );
     if (params !== null) {
-      fetch('http://localhost:3001/channels', {...params,
+      fetch('/api/channels', {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))

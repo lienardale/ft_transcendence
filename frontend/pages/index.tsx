@@ -45,7 +45,7 @@ function HomePage({ query }) {
       body: JSON.stringify({code, user: currentUser}),
       headers: headers
     };
-    await fetch("http://localhost:3001/2fa/authenticate", params)
+    await fetch("/api/2fa/authenticate", params)
     .then(response => responseHandler(response))
     .then((response) =>  handleToken(response))
     .catch(_error => {
@@ -60,7 +60,7 @@ function HomePage({ query }) {
       localStorage.setItem("currentUser", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
     }
-    await connectChatSocket(user, accessToken);
+    const retSock = await connectChatSocket(user, accessToken);
     setCurrentUser(user);
     setCredsAreWrong(false);
   }
@@ -72,7 +72,7 @@ function HomePage({ query }) {
     }
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch("http://localhost:3001/logWithToken", params)
+      await fetch("/api/logWithToken", params)
       .then(response => responseHandler(response))
       .then((response) => {
         handleToken({ 
@@ -93,7 +93,7 @@ function HomePage({ query }) {
         'Authorization': 'Bearer ' + refreshToken
     });
     const params = { headers: customHeaders };
-    await fetch("http://localhost:3001/refresh", params)
+    await fetch("/api/refresh", params)
     .then(response => responseHandler(response))
     .then((response) => {
         handleToken({ 
@@ -110,7 +110,7 @@ function HomePage({ query }) {
   }
 
   async function logWith42(query) {
-    await fetch("http://localhost:3001/42auth?code=" + query.code)
+    await fetch("/api/42auth?code=" + query.code)
     .then(response => responseHandler(response))
     .then(response => {
       if (response.accessToken === 'token-connected') { 
@@ -127,7 +127,14 @@ function HomePage({ query }) {
   }
 
   async function connectChatSocket(user: any, accessToken :any) {
-    const newSocket = io("http://localhost:3001", { auth: { token: accessToken, id_user: user.id  } } );
+    const newSocket = io("wss://roland-garrong.fr", {
+      auth: { token: accessToken, id_user: user.id }, 
+      secure: true, 
+      withCredentials: true, 
+      transports: ['websocket'],
+      path:'/roland-sockets',
+    });
+    console.log("Chat_socket : ", newSocket);
     chatCtx.setChatSocket(newSocket);
   }
 

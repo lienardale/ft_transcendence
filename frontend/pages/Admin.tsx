@@ -96,7 +96,7 @@ function Admin(props: any) {
 	async function getChannels() {
 		await authCtx.authCheck(localStorage.getItem("currentUser"));
 		let ret: ChannelFull[];
-		(ret = await fetchGet('http://localhost:3001/channels/all/' + currentUser!.id, controller)) !== undefined ? setChannels(ret) : 0;
+		(ret = await fetchGet('/api/channels/all/' + currentUser!.id, controller)) !== undefined ? setChannels(ret) : 0;
 		if (new_page === true)
 			return ;
 	}
@@ -104,14 +104,14 @@ function Admin(props: any) {
 	async function getLogins() {
 		await authCtx.authCheck(localStorage.getItem("currentUser"));
 		let ret: {};
-		(ret = await fetchGet('http://localhost:3001/users/all/' + currentUser!.id, controller)) !== undefined ? setLogins(ret) : 0;
+		(ret = await fetchGet('/api/users/all/' + currentUser!.id, controller)) !== undefined ? setLogins(ret) : 0;
 		if (new_page === true)
 			return ;
 	}
 
 	async function getChannelSelected(channelId: Number) {
 		let ret: {};
-		(ret = await fetchGet('http://localhost:3001/channels/selected/' + channelId, controller)) !== undefined ? setChannelSelected(ret) : 0;	
+		(ret = await fetchGet('/api/channels/selected/' + channelId, controller)) !== undefined ? setChannelSelected(ret) : 0;	
 		if (new_page === true)
 			return ;
 	}
@@ -189,7 +189,7 @@ function Admin(props: any) {
 		member.web_admin ? webAdmin = false : webAdmin = true;
 		const params = await fetchParams('PATCH', { web_admin: webAdmin });
 		if (params !== null) {
-		fetch("http://localhost:3001/user/" + member.id, {...params,
+		fetch("/api/user/" + member.id, {...params,
         signal: controller.signal
       })
 		.then(response => responseHandler(response))
@@ -222,7 +222,7 @@ function Admin(props: any) {
 		member.banned_user ? ban = false : ban = true;
 		const params = await fetchParams('PATCH', { banned_user: ban });
 		if (params !== null) {
-		  fetch("http://localhost:3001/user/" + member.id, {...params,
+		  fetch("/api/user/" + member.id, {...params,
 		  signal: controller.signal
 		})
 		  .then(response => responseHandler(response))

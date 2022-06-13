@@ -26,7 +26,7 @@ function ChangePassword(props: any) {
             const params = await fetchParams('POST', { code: oldPwd.current.value, channelId: channelCandidate.id } );
             let result :boolean  = false;
             if (params !== null) {
-                await fetch("http://localhost:3001/channels/check-password", params)
+                await fetch("/api/channels/check-password", params)
                 .then(response => responseHandler(response))
                 .then((response) => { result = response.result })
                 .catch(_error => { result = false });
@@ -41,7 +41,7 @@ function ChangePassword(props: any) {
 
     async function submitPwd(pwd: string, hasPwd: boolean) {
         await authCtx.authCheck(localStorage.getItem("currentUser"));
-        const url = 'http://localhost:3001/channels/' + props.channelSelected.id;
+        const url = '/api/channels/' + props.channelSelected.id;
         let params = await fetchParams('PATCH', { 
                 channel_type: props.channelSelected.channel_type, 
                 name: props.channelSelected.name, 

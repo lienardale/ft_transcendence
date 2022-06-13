@@ -17,7 +17,7 @@ function Ladder(){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-        await fetch("http://localhost:3001/users/games-won", {...params,
+        await fetch("/api/users/games-won", {...params,
         signal: controller.signal
       })
         .then(response => responseHandler(response))

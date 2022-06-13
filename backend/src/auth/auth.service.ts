@@ -30,7 +30,7 @@ export class AuthService {
                 'client_id': process.env.API42_CLIENT_ID,
                 'client_secret': process.env.API42_SECRET,
                 'code': code,
-                'redirect_uri': 'http://localhost:3000',
+                'redirect_uri': process.env.REDIRECT_URI,
             },
         };
 

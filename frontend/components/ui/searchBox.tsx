@@ -20,7 +20,7 @@ function SearchBox(props: any) {
             const filtreId = props.filtre.map((elem) => (elem.id));
             const params = await fetchParams('GET');
             if (params !== null) {
-                fetch('http://localhost:3001/users', params)
+                fetch('/api/users', params)
                 .then(response => responseHandler(response))
                 .then(userList => {
                     const loginList = userList

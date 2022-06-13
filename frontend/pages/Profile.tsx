@@ -59,7 +59,7 @@ function Profile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('POST', { code });
     if (params !== null) {
-      fetch("http://localhost:3001/2fa/turn-on", {...params,
+      fetch("/api/2fa/turn-on", {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -93,7 +93,7 @@ function Profile() {
     }
     const params = await fetchParams('POST', { code });
     if (params !== null) {
-      fetch("http://localhost:3001/2fa/turn-off", {...params,
+      fetch("/api/2fa/turn-off", {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -120,7 +120,7 @@ function Profile() {
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('POST', {});
     if (params !== null && displayQr !== true && twoFAEnabled !== "true") {
-      fetch("http://localhost:3001/2fa/generate-qrcode", {...params,
+      fetch("/api/2fa/generate-qrcode", {...params,
       signal: controller.signal
     })
       .then(response => {
@@ -160,7 +160,7 @@ async function check_logins(input_login : string){
   await authCtx.authCheck(localStorage.getItem("currentUser"));
   const params = await fetchParams('GET');
   if (params !== null) {
-    await fetch("http://localhost:3001/users", {...params,
+    await fetch("/api/users", {...params,
       signal: controller.signal
     })
     .then(response => responseHandler(response))
@@ -194,7 +194,7 @@ async function check_logins(input_login : string){
 
     const params = await fetchParams('PATCH', { login });
     if (test_login !== false && params !== null) {
-      await fetch("http://localhost:3001/user", {...params,
+      await fetch("/api/user", {...params,
       signal: controller.signal
     })
       .then(response => {
@@ -206,6 +206,7 @@ async function check_logins(input_login : string){
               setErrors(null);
               chatCtx.chatSocket.emit('majPMServer', { id_user: currentUser!.id });
               chatCtx.chatSocket.emit('majLoginsServer', { id_user: currentUser!.id });
+              console.log('majLoginsServer sent to back ', currentUser!.id)
             }
           })
         }
@@ -222,7 +223,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('PATCH', { avatar_path });
     if (params !== null) {
-      return await fetch("http://localhost:3001/user", {...params,
+      return await fetch("/api/user", {...params,
       signal: controller.signal
     })
       .then(response => {
@@ -339,7 +340,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch("http://localhost:3001/user/rank/" + currentUser!.id, {...params,
+      await fetch("/api/user/rank/" + currentUser!.id, {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -355,7 +356,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends/' + currentUser!.id, {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -371,7 +372,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends-asking/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends-asking/' + currentUser!.id, {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -387,7 +388,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/friends-list/friends-asked/' + currentUser!.id, {...params,
+      await fetch('/api/friends-list/friends-asked/' + currentUser!.id, {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -403,7 +404,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/blocked-list/blocked/' + currentUser!.id, {...params,
+      await fetch('/api/blocked-list/blocked/' + currentUser!.id, {...params,
         signal: controller.signal
       })
       .then(response => responseHandler(response))
@@ -419,7 +420,7 @@ async function check_logins(input_login : string){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch('http://localhost:3001/games', {...params,
+      await fetch('/api/games', {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))

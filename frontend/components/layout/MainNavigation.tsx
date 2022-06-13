@@ -31,7 +31,7 @@ function MainNavigation () {
         await authCtx.authCheck(localStorage.getItem("currentUser"));
         const params = await fetchParams('GET');
         if (params !== null) {
-            fetch("http://localhost:3001/logout", params);
+            fetch("/api/logout", params);
         }
         chatCtx.chatSocket.disconnect();
         localStorage.removeItem('currentUser');
@@ -67,7 +67,7 @@ function MainNavigation () {
             { type_game: 'classic_found', userPlayer1: idUser, userPlayer2: currentUser!.id }
         );
         if (params !== null) {
-            fetch('http://localhost:3001/games', params)
+            fetch('/api/games', params)
             .then(response => responseHandler(response))
             .then(response => { 
                 chatCtx.chatSocket.emit('acceptNewGame', JSON.stringify(response)); 

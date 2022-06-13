@@ -29,7 +29,7 @@ function FirstLogin(){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('GET');
     if (params !== null) {
-      await fetch("http://localhost:3001/users", {...params,
+      await fetch("/api/users", {...params,
       signal: controller.signal
     })
       .then(response => responseHandler(response))
@@ -64,7 +64,7 @@ function FirstLogin(){
 
     const params = await fetchParams('PATCH', { login });
     if (test_login !== false && params !== null) {
-      fetch("http://localhost:3001/user", {...params,
+      fetch("/api/user", {...params,
       signal: controller.signal
     })
       .then(response => {
@@ -90,7 +90,7 @@ function FirstLogin(){
     await authCtx.authCheck(localStorage.getItem("currentUser"));
     const params = await fetchParams('PATCH', { avatar_path });
     if (params !== null) {
-      return await fetch("http://localhost:3001/user", {...params,
+      return await fetch("/api/user", {...params,
       signal: controller.signal
     })
       .then(response => {

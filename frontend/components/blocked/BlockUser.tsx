@@ -17,7 +17,7 @@ function BlockUser(props: any){
           })
           if (params !== null) {
             fetch(
-                'http://localhost:3001/blocked-list', params
+                '/api/blocked-list', params
             ).then(response => {
                 if (response.ok) {
                     return response.text();

@@ -18,7 +18,13 @@ function Play() {
 	const navigate = useNavigate();
 	const { value: currentUser, setCurrentUser } = React.useContext(CurrentUserContext)!;
 	const accessToken = localStorage.getItem('currentUser');
-	const socket = io('http://localhost:3001/pong', { auth: { token: accessToken, id_user: currentUser.id } });
+	const socket = io('wss://roland-garrong.fr/pong', { 
+		auth: { token: accessToken, id_user: currentUser.id }, 
+		secure: true,
+		withCredentials: true, 
+		transports: ['websocket'],
+		path:"/roland-sockets",
+	});
 	const chatCtx = React.useContext(ChatSocketContext);
 	const authCtx = React.useContext(AuthChecker);
 	const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -64,7 +70,7 @@ function Play() {
 	async function fromChatMatch() {
 		await authCtx.authCheck(localStorage.getItem(currentUser));
 		let ret: {};
-    	if ((ret = await fetchGet('http://localhost:3001/games', controller)) === undefined)
+    	if ((ret = await fetchGet('/api/games', controller)) === undefined)
 			return ;
 		let games = ret.filter(isOngoing);
 		games.forEach(function(element) {
@@ -573,7 +579,7 @@ function Play() {
 			}
 			await authCtx.authCheck(localStorage.getItem(currentUser));
 			let ret: {};
-    		if ((ret = await fetchPatch('http://localhost:3001/games/' + gameId, requestOptionsGame)) === undefined)
+    		if ((ret = await fetchPatch('/api/games/' + gameId, requestOptionsGame)) === undefined)
 				return ;
 			socket.emit('ongoingGames');
 		}
@@ -687,13 +693,13 @@ function Play() {
 					if (games.length === 0) {
 						await authCtx.authCheck(localStorage.getItem(currentUser));
 						let ret: {};
-   	 					if ((ret = await fetchPost('http://localhost:3001/games', { type_game: type_game + '_search', userPlayer1: currentUser }) === undefined))
+   	 					if ((ret = await fetchPost('/api/games', { type_game: type_game + '_search', userPlayer1: currentUser }) === undefined))
 							return ;
 						chatCtx.chatSocket.emit('searchGame', { id_user: currentUser!.id });
 					} else if (games[0].userPlayer1.id != currentUser.id) {
 						await authCtx.authCheck(localStorage.getItem(currentUser));
 						let ret: {};
-   	 					if ((ret = await fetchPatch('http://localhost:3001/games/' + games[0].id, { type_game: type_game + '_found', userPlayer2: currentUser }) === undefined))
+   	 					if ((ret = await fetchPatch('/api/games/' + games[0].id, { type_game: type_game + '_found', userPlayer2: currentUser }) === undefined))
 							return ;
 						chatCtx.chatSocket.emit('startGame', { id_p1: currentUser!.id, id_p2: games[0].userPlayer1.id });
 						socket.emit('createRoom', { gameId: games[0].id, user1Id: games[0].userPlayer1.id, user2Id: currentUser.id});
@@ -718,7 +724,7 @@ function Play() {
 	async function getWaitingGames() {
 		await authCtx.authCheck(localStorage.getItem(currentUser));
 		let ret: {};
-    	if ((ret = await fetchGet('http://localhost:3001/games', controller)) === undefined)
+    	if ((ret = await fetchGet('/api/games', controller)) === undefined)
 			return ;
 		let games = ret.filter(isWaiting);
 		return games;
@@ -808,7 +814,7 @@ function Play() {
 	async function getOngoingGames() {
 		await authCtx.authCheck(localStorage.getItem(currentUser));
 		let ret: {};
-    	if ((ret = await fetchGet('http://localhost:3001/games', controller)) === undefined)
+    	if ((ret = await fetchGet('/api/games', controller)) === undefined)
 			return ;
 		let games = ret.filter(isOngoing);
 		const list = games.map((word, idx) => 

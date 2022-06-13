@@ -16,6 +16,7 @@ import { Channel } from 'src/channels/entities/channel.entity';
   cors: {
     origin: '*',
   },
+  transports: ['websocket'],
 })
 export class ChatGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
@@ -134,16 +135,19 @@ export class ChatGateway
   @SubscribeMessage('majLoginsServer')
   handlemajLogins(client: Socket, payload: { id_user : number } ) {
     this.server.emit('majLogins', payload.id_user);
+    this.logger.log(`majLogins ${payload.id_user}`);
   }
 
   @SubscribeMessage('majAvatarServer')
   handlemajAvatar(client: Socket, payload: { id_user : number } ) {
     this.server.emit('majAvatar', payload.id_user);
+    this.logger.log(`majAvatar ${payload.id_user}`);
   }
 
   @SubscribeMessage('majChannelServer')
   handleDeleteChannel(client: Socket ) {
     this.server.emit('majChannels');
+    this.logger.log(`majChannels`);
   }
 
   @SubscribeMessage('majChannelSelectedToServer')
@@ -263,7 +267,7 @@ export class ChatGateway
   /******* (DE)CONNEXION ********/
 
   afterInit(server: Server) {
-    this.logger.log('Init');
+    this.logger.log(`Init`);
   }
 
   async handleDisconnect(client: Socket, ...args: any[]) {

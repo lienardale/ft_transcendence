@@ -19,7 +19,7 @@ function AskFriend(props: any) {
           })
           if (params !== null) {
             fetch(
-                'http://localhost:3001/friends-list', params
+                '/api/friends-list', params
             )
             .then(response => {
                 if (response.ok) {
