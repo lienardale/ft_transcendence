@@ -256,7 +256,7 @@ async function check_logins(input_login : string){
           method: "POST", 
           body 
         }
-        await fetch("/api/check",{...params2,
+        await fetch("/avatar_api/check",{...params2,
           signal: controller.signal
         }).then(response => {
         if (response.ok) {
