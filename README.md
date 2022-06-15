@@ -1,6 +1,11 @@
 # ft_transcendence
 
 ## Deployed @ [roland-garrong.fr](https://roland-garrong.fr)
+<a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cl4cq9w7c004409k3asnbj82v/project/2332608" alt="alienard's 42 ft_transcendence Score" /></a>
+<p align="left">
+	<img src="./screens/demo_transcend.gif" >
+</p>
+
 
 ## Team
 - [Pierre Cariou](https://github.com/pierrecariou)
@@ -12,6 +17,7 @@
 ## Project
 - This is 42's comon-core final project
 - The goal was to make a fullstack web platform with languages and technologies we never used before.
+- Deployment was not part of the school's project, it was done as a way to gain understanding of various implications
 
 ## Stack
 <p align="left" dir="auto"> 
@@ -70,6 +76,33 @@
   - Matchmaking system
   - Watch ongoing games
   - Responsive
+
+## Deployment
+
+As said earlier, deployment was not part of the school's project, it was done as a way to gain understanding of various implications :
+
+- working with a VPS :
+  - configuring associated DNS
+  - configuring Firewall
+  - connecting SSH with VS Code
+- adapt the code :
+  - rewrite fetchs with dynamic paths ("localhost:3001" -> /api)
+  - add https options for sockets ("ws://" -> "wss://" + "secure: true")
+- configure an nginx reverse-proxy :
+  - for the frontend
+  - for the backend
+  - for the sockets
+  - for the server-side checks made by the front app
+- implement ssl thanks to :
+  - Letsencrypt
+  - Certbot
+- implement a minimalist CI/CD pipeline :
+  - working with [Github's Docker Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-docker-registry)
+  - creating scripts to automate new-images push, pull, and redeployment
+  - optimizing Docker images' size
+    - working with intermediate containers
+    - reducing cache size by minimysing the number of instructions
+    - using light-weight (alpine) node images
 
 ## Run it locally
 
