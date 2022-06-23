@@ -19,6 +19,19 @@
 - The goal was to make a fullstack web platform with languages and technologies we never used before.
 - Deployment was not part of the school's project, it was done as a way to gain understanding of various implications
 
+## Code stats : 
+
+- 5 contributors
+- Total 11 702 lines
+  - Typescript : 10 053 lines, 91,0%
+  - CSS : 1649 lines, 7,4%
+  - Shell : 1,2%
+  - Other (dockerfiles, envs, configs...) : 0,4%
+- Git
+  - 157 branches
+  - 168 pull requests
+  - 926 commits
+
 ## Stack
 <p align="left" dir="auto"> 
     <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> 
